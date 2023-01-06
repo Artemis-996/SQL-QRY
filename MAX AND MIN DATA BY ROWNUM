@@ -1,0 +1,9 @@
+SELECT *
+FROM (SELECT ROWNUM R1,SAL AS MAX_SAL
+               FROM(SELECT DISTINCT(SAL)
+                            FROM EMP
+             ORDER BY SAL DESC)), (SELECT ROWNUM R2,SAL AS MIN_SAL
+                                                      FROM(SELECT DISTINCT(SAL)
+                                                                 FROM EMP
+                                                                                      ORDER BY SAL ASC))
+WHERE R1 = 5 AND R2 = 10
